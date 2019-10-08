@@ -1,4 +1,4 @@
-const User = require("../models/user");
+const Student = require("../models/student");
 const jwt = require("jsonwebtoken");
 const bcrypt = require('bcryptjs')
 const checkPassword = require("../helpers/checkPassword");
@@ -7,7 +7,7 @@ const bcryptPass = require('../helpers/bcryptPass')
 
 module.exports = {
   findAll: function(req,res) {
-    User.find({})
+    Student.find({})
     .then((user) => {
       res.status(200).json({
         user,
@@ -22,7 +22,7 @@ module.exports = {
     })
   },
   login: function(req, res) {
-    User.findOne({ email: req.body.email })
+    Student.findOne({ email: req.body.email })
         .then(user => {
             console.log(user)
             if (user) {
@@ -122,7 +122,7 @@ register: function(req, res) {
     console.log(`score nih`, req.body.score);
     
     
-    User.updateOne(
+    Student.updateOne(
       { _id : req.data.userId},
       { score : req.body.score },
       { runValidators: true }
@@ -142,7 +142,7 @@ register: function(req, res) {
   },
   
   addingScore: function (req,res) {
-    User.find(
+    Student.find(
       { _id : req.data.user._id},
       { score : + Number (req.body.score) },
     )
