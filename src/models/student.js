@@ -4,14 +4,23 @@ const generatePassword = require("../helpers/generatePassword");
 const bcrypt = require("bcryptjs");
 
 
-var userSchema = new Schema(
+var studentSchema = new Schema(
   {
-    name: {
+    username: {
       type: String,
-      required: [true, "name is requires"]
+      required: [true, "username is required"]
     },
     picture: {
       type: String
+    },
+    fullname: {
+      type: String,
+      required: [true, "fullname is required"]
+    },
+    password: {
+      type: String,
+      required: [true, "password is required"],
+      minlength: [6, "password min 6 character"]
     },
     email: {
       type: String,
@@ -27,14 +36,20 @@ var userSchema = new Schema(
       },
       required: [true, "email is required"]
     },
-    score: {
-      type: Number,
-      default: 0
-    },
-    password: {
+    address: {
       type: String,
-      required: [true, "password is requires"],
-      minlength: [6, "password min 6 character"]
+      required: [true, "address is required"]
+    },
+    hobby: {
+      type: String,
+    },
+    osis: {
+      type: Boolean,
+      default: false
+    },
+    phone_number: {
+      type: String,
+      required: [true, "name is required"]
     },
   },
   {
@@ -42,21 +57,21 @@ var userSchema = new Schema(
   }
 );
 
-// userSchema.post("validate", doc => {
+// studentSchema.post("validate", doc => {
 //   doc.password = bcrypt.hashSync(
 //     doc.password,
 //     Number(process.env.SALT_PASSWORD)
 //   );
 // });
 
-// userSchema.post("save", function(user) {
+// studentSchema.post("save", function(student) {
 //   generatePassword(this.email, this.password).then(function(newPassword) {
-//     User.update({ _id: user._id }, { password: newPassword })
+//     Student.update({ _id: student._id }, { password: newPassword })
 //       .then(function() {})
 //       .catch(function() {});
 //   });
 // });
 
-const User = mongoose.model("User", userSchema);
+const Student = mongoose.model("Student", studentSchema);
 
-module.exports = User;
+module.exports = Student;

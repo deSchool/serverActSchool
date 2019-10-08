@@ -1,13 +1,13 @@
 import express from 'express';
 var router = express.Router();
-import studentRoute from './student'
+import { findAll} from '../controllers/studentController'
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.json({
-    message: `index home`
+    message: `Student page`
   })
 });
-router.use('/student', studentRoute)
+router.get('/profile', findAll)
 
 export default router
