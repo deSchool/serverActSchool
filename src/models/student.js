@@ -15,7 +15,7 @@ var studentSchema = new Schema(
     },
     fullname: {
       type: String,
-      required: [true, "fullname is required"]
+      // required: [true, "fullname is required"]
     },
     password: {
       type: String,
@@ -38,7 +38,7 @@ var studentSchema = new Schema(
     },
     address: {
       type: String,
-      required: [true, "address is required"]
+      // required: [true, "address is required"]
     },
     hobby: {
       type: String,

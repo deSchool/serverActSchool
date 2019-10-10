@@ -1,6 +1,6 @@
 import express from 'express';
 var router = express.Router();
-import { findAll} from '../controllers/studentController'
+import { findAll, register, login, profile} from '../controllers/studentController'
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -8,6 +8,9 @@ router.get('/', function(req, res, next) {
     message: `Student page`
   })
 });
-router.get('/profile', findAll)
+router.get('/all', findAll)
+router.get('/profile', profile)
+router.post('/register', register)
+router.post('/login', login)
 
 export default router
