@@ -1,5 +1,6 @@
 import express from 'express';
 var router = express.Router();
+import studentRoute from './student'
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -7,6 +8,6 @@ router.get('/', function(req, res, next) {
     message: `index home`
   })
 });
-// router.use()
+router.use('/student', studentRoute)
 
-export default router;
+export default router

@@ -1,4 +1,4 @@
-const User = require("../models/user");
+const Student = require("../models/student");
 const jwt = require("jsonwebtoken");
 const bcrypt = require('bcryptjs')
 const checkPassword = require("../helpers/checkPassword");
@@ -7,7 +7,7 @@ const bcryptPass = require('../helpers/bcryptPass')
 
 module.exports = {
   findAll: function(req,res) {
-    User.find({})
+    Student.find({})
     .then((user) => {
       res.status(200).json({
         user,
@@ -22,55 +22,41 @@ module.exports = {
     })
   },
   login: function(req, res) {
-    User.findOne({ email: req.body.email })
+    Student.findOne({ email: req.body.email })
         .then(user => {
-            console.log(user)
             if (user) {
-              console.log(`====== 1`);
-              
-            if (bcrypt.compareSync(req.body.password, user.password)) {
-                jwt.sign(
-                {
-                    userId: user._id,
-                    email: user.email
-                },
-                process.env.JWT_TOKEN,
-                function(err, token) {
-                    if (!err) {
-                      console.log(`======= 2`);
-                      console.log(`token `+token);
-                      
-                      
-                    res.status(201).json({
-                        id: user.id,
-                        token: token,
-                        score: user.score
-                    });
-                    } else {
-                      console.log(`======= 3`);
-                      
-                    res.status(500).json({
-                        message: `Email and password didn't match 1`
-                    });
-                    }
-                }
-                );
+              if (bcrypt.compareSync(req.body.password, user.password)) {
+                  jwt.sign(
+                  {
+                      userId: user._id,
+                      email: user.email
+                  },
+                  process.env.JWT_TOKEN,
+                  function(err, token) {
+                      if (!err) {
+                        res.status(201).json({
+                            id: user.id,
+                            token: token
+                        });
+                      } else {
+                        res.status(500).json({
+                            message: `Email and password didn't match 1`
+                        });
+                      }
+                  }
+                  );
+              } else {
+                  res.status(500).json({
+                  message: "email and password didnt match 2"
+                  });
+              }
             } else {
-              console.log(`======= 4`);
-                res.status(500).json({
-                message: "email and password didnt match 2"
-                });
-            }
-            } else {
-
-              console.log(`======= 5`);
             res.status(404).json({
                 message: "you did not have account, please signup first 3"
             });
             }
         })
         .catch(err => {
-          console.log(`======= 6`);
             res.status(400).json({
                 message: `Something's error from our server`
             })
@@ -80,49 +66,39 @@ module.exports = {
 register: function(req, res) {
     let validateEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     if (!validateEmail.test(String(req.body.email).toLowerCase())) {
-
-      console.log(`======= 1`);
        res.status(400).json({
            message: `Please use correct email format`
        })
     } else if (validateEmail.test(String(req.body.email).toLowerCase())) {
-
-      console.log(`======= 2`);
-        let dataUser = new User({
-        name: req.body.name,
-        email: req.body.email,
-        password: req.body.password
+        let dataUser = new Student({
+          username: req.body.username,
+          email: req.body.email,
+          password: req.body.password,
+          phone_number: req.body.phone_number
         });
     
         bcryptPass(dataUser)
         dataUser.save()
         .then(user => {
-          console.log(`======= 3`);
             const token = jwt.sign({user}, process.env.JWT_TOKEN)
             res.status(201).json({
-            id: user.id,
-            token,
-            score: user.score,
-            message: `registration success`
+              id: user.id,
+              token,
+              score: user.score,
+              message: `registration success`
             });
         })
         .catch(err => {
-          console.log(`======= 4`);
             res.status(500).json({
-            err,
-            message: `Email has been taken, please use another email`
+              err,
+              message: `Email has been taken, please use another email`
             });
         });
     } 
   },
 
   update: function (req,res) {
-    console.log('headers', req.data);
-    console.log(`headers id `, req.data.userId);
-    console.log(`score nih`, req.body.score);
-    
-    
-    User.updateOne(
+    Student.updateOne(
       { _id : req.data.userId},
       { score : req.body.score },
       { runValidators: true }
@@ -142,7 +118,7 @@ register: function(req, res) {
   },
   
   addingScore: function (req,res) {
-    User.find(
+    Student.find(
       { _id : req.data.user._id},
       { score : + Number (req.body.score) },
     )
@@ -159,4 +135,7 @@ register: function(req, res) {
       })
     })
   },
+  profile: function (req, res) {
+    Student.findOne({email: req.body.id})
+  }
 };
