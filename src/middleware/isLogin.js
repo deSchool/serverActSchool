@@ -1,4 +1,4 @@
-const User = require("../models/user")
+const Student = require("../models/student")
 const jwt = require("jsonwebtoken")
 
 // function isLogin (req,res,next) {
@@ -48,7 +48,6 @@ const jwt = require("jsonwebtoken")
 
 function isLogin(req,res, next) {
     console.log('isLogin ===== ini req headers', req.headers);
-    console.log('isLogin ===== ini req data', req.data);
     
   let decoded = jwt.verify(req.headers.token, process.env.JWT_TOKEN, (err, decoded) => {
     if ( err ) {
