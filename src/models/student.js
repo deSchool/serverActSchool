@@ -3,6 +3,8 @@ const Schema = mongoose.Schema;
 const generatePassword = require("../helpers/generatePassword");
 const bcrypt = require("bcryptjs");
 
+const ClassLevel = require("../models/classLevel");
+
 
 var studentSchema = new Schema(
   {
@@ -51,6 +53,11 @@ var studentSchema = new Schema(
       type: String,
       required: [true, "name is required"]
     },
+    status: {
+      type: Boolean,
+      default: true
+    },
+    class_level: [{ type: Schema.Types.ObjectId, ref: "ClassLevel" }]
   },
   {
     timestamps: true

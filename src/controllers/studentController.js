@@ -135,7 +135,58 @@ register: function(req, res) {
       })
     })
   },
+
   profile: function (req, res) {
-    Student.findOne({email: req.body.id})
+    Student.findOne({_id: req.data.userId})
+    .then((user) => {
+      res.status(200).json({
+        user,
+        message: `Profile access granted`
+      })
+    })
+    .catch((err) => {
+      res.status(500).json({
+        err,
+        message: `Profile access denied`
+      })
+    })
+  },
+
+  editProfile: function (req, res) {
+    try {
+      let data = {
+        username: req.body.username,
+        picture: req.body.picture,
+        fullname: req.body.fullname,
+        password: req.body.password,
+        email: req.body.password,
+        address: req.body.address,
+        hobby: req.body.hobby,
+        osis: req.body.osis,
+        phone_number: req.body.phone_number,
+        status: req.body.status,
+        class_level: req.body.class_level
+      }
+      Student.updateOne(
+        {_id: req.data.userId},
+        data
+      )
+      .then((data) =>{
+        res.status(200).jso({
+          data,
+          message: `Data has been updated`
+        })
+      })
+      .catch((err) => {
+        res.status(500).json({
+          err,
+          message: `Data failed to update`
+        })
+      })
+
+    }
+    catch(error) {
+      console.log(error)
+    }
   }
 };
