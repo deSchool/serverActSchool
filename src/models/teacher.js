@@ -6,7 +6,7 @@ import bcrypt from "bcryptjs";
 import ClassLevel from "../models/classLevel";
 
 
-var studentSchema = new Schema(
+var teacherSchema = new Schema(
   {
     username: {
       type: String,
@@ -45,10 +45,6 @@ var studentSchema = new Schema(
     hobby: {
       type: String,
     },
-    osis: {
-      type: Boolean,
-      default: false
-    },
     phone_number: {
       type: String,
       required: [true, "name is required"]
@@ -57,7 +53,7 @@ var studentSchema = new Schema(
       type: Boolean,
       default: true
     },
-    class_level_id: { type: Schema.Types.ObjectId, ref: ClassLevel }
+    class_level: { type: Schema.Types.ObjectId, ref: "ClassLevel" }
   },
   {
     timestamps: true,
@@ -65,21 +61,21 @@ var studentSchema = new Schema(
   }
 );
 
-// studentSchema.post("validate", doc => {
+// teacherSchema.post("validate", doc => {
 //   doc.password = bcrypt.hashSync(
 //     doc.password,
 //     Number(process.env.SALT_PASSWORD)
 //   );
 // });
 
-// studentSchema.post("save", function(student) {
+// teacherSchema.post("save", function(teacher) {
 //   generatePassword(this.email, this.password).then(function(newPassword) {
-//     Student.update({ _id: student._id }, { password: newPassword })
+//     Teacher.update({ _id: teacher._id }, { password: newPassword })
 //       .then(function() {})
 //       .catch(function() {});
 //   });
 // });
 
-const Student = mongoose.model("Student", studentSchema);
+const Teacher = mongoose.model("Teacher", teacherSchema);
 
-module.exports = Student;
+module.exports = Teacher;

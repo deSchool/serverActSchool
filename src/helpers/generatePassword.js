@@ -1,4 +1,4 @@
-const bcrypt = require('bcryptjs')
+import bcrypt from 'bcryptjs'
 
 function generatePassword (email, password) {
   return new Promise(function (resolve, reject) {
