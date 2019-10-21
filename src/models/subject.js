@@ -1,7 +1,7 @@
 import mongoose  from "mongoose";
 const Schema = mongoose.Schema;
 
-var classLevelSchema = new Schema(
+var subjectSchema = new Schema(
   {
     name: {
       type: String,
@@ -13,6 +13,6 @@ var classLevelSchema = new Schema(
   }
 );
 
-const ClassLevel = mongoose.model("ClassLevel", classLevelSchema);
+const Subject = mongoose.model("Subject", subjectSchema);
 
-module.exports = ClassLevel;
+module.exports = Subject;

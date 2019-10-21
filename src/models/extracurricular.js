@@ -1,7 +1,7 @@
 import mongoose  from "mongoose";
 const Schema = mongoose.Schema;
 
-var classLevelSchema = new Schema(
+var extracurricularSchema = new Schema(
   {
     name: {
       type: String,
@@ -13,6 +13,6 @@ var classLevelSchema = new Schema(
   }
 );
 
-const ClassLevel = mongoose.model("ClassLevel", classLevelSchema);
+const Extracurricular = mongoose.model("Extracurricular", extracurricularSchema);
 
-module.exports = ClassLevel;
+module.exports = Extracurricular;
