@@ -4,6 +4,7 @@ const bcrypt = require('bcryptjs')
 const checkPassword = require("../helpers/checkPassword");
 const generatePassword = require("../helpers/generatePassword")
 const bcryptPass = require('../helpers/bcryptPass')
+import StudentAbsence from '../models/studentAbsence'
 
 module.exports = {
   findAll: function(req,res) {
@@ -82,9 +83,8 @@ register: function(req, res) {
         .then(user => {
             const token = jwt.sign({user}, process.env.JWT_TOKEN)
             res.status(201).json({
-              id: user.id,
+              id: user._id,
               token,
-              score: user.score,
               message: `registration success`
             });
         })
@@ -172,7 +172,7 @@ register: function(req, res) {
         data
       )
       .then((data) =>{
-        res.status(200).jso({
+        res.status(200).json({
           data,
           message: `Data has been updated`
         })
@@ -188,5 +188,25 @@ register: function(req, res) {
     catch(error) {
       console.log(error)
     }
+  },
+
+   addAbsence: async function(req,res) {
+     const data = {
+       absence: req.body.absence,
+       student_id: req.data.userId
+     }
+     StudentAbsence.create(data)
+      .then((data) => {
+        res.status(200).json({
+          data,
+          message: `Absence has been created`
+        })
+      })
+      .catch((err) => {
+        res.status(500).json({
+          err,
+          message: `Absence failed to create`
+        })
+      })
   }
 };
