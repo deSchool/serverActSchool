@@ -15,4 +15,4 @@ var classLevelSchema = new Schema(
 
 const ClassLevel = mongoose.model("ClassLevel", classLevelSchema);
 
-module.exports = ClassLevel;
+export default ClassLevel;
