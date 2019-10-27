@@ -18,4 +18,4 @@ var extracurricularConjSchema = new Schema(
 
 const ExtracurricularConj = mongoose.model("ExtracurricularConj", extracurricularConjSchema);
 
-module.exports = ExtracurricularConj;
+export default ExtracurricularConj;

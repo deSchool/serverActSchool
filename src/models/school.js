@@ -30,4 +30,4 @@ var schoolSchema = new Schema(
 
 const School = mongoose.model("School", schoolSchema);
 
-module.exports = School;
+export default School;

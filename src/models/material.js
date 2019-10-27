@@ -30,4 +30,4 @@ var materialSchema = new Schema(
 
 const Material = mongoose.model("Material", materialSchema);
 
-module.exports = Material;
+export default Material;

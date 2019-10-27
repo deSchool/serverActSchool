@@ -15,4 +15,4 @@ var classSchema = new Schema(
 
 const Class = mongoose.model("Class", classSchema);
 
-module.exports = Class;
+export default Class;

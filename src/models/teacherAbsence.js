@@ -18,4 +18,4 @@ var teacherAbsenceSchema = new Schema(
 
 const TeacherAbsence = mongoose.model("TeacherAbsence", teacherAbsenceSchema);
 
-module.exports = TeacherAbsence;
+export default TeacherAbsence;

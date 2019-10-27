@@ -15,4 +15,4 @@ var provinceSchema = new Schema(
 
 const Province = mongoose.model("Province", provinceSchema);
 
-module.exports = Province;
+export default Province;

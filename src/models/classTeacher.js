@@ -24,4 +24,4 @@ var classTeacherSchema = new Schema(
 
 const ClassTeacher = mongoose.model("ClassTeacher", classTeacherSchema);
 
-module.exports = ClassTeacher;
+export default ClassTeacher;
