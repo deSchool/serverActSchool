@@ -1,6 +1,7 @@
 import express from 'express';
 var router = express.Router();
 import studentRoute from './student'
+import seedData from './seedData'
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -9,5 +10,6 @@ router.get('/', function(req, res, next) {
   })
 });
 router.use('/student', studentRoute)
+router.use(`/seed`, seedData)
 
 export default router

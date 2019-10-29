@@ -1,4 +1,4 @@
-[
+const dbSchool = [
   {
     name: "SMA 70",
     city_id: 1,
@@ -32,3 +32,5 @@
     phone_number: "0812123456"
   }
 ]
+
+export default dbSchool

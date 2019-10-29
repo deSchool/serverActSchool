@@ -1,3 +1,18 @@
+process.env.NODE_ENV = process.env.NODE_ENV || 'development';
+require('dotenv').config()
+import debug from 'debug'
+import express from 'express';
+import path from 'path';
+import mongoose from 'mongoose'
+
+const app = express();
+
+app.use(logger('dev'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, './public')));
+
 import City from '../../models/city'
 import Class from '../../models/class'
 import ClassLevel from '../../models/classLevel'
@@ -16,7 +31,7 @@ import Subject from '../../models/subject'
 import Teacher from '../../models/teacher'
 import TeacherAbsence from '../../models/teacherAbsence'
 
-import {City} from './db/city.js'
+import dbCity from './db/city.js.js.js'
 
 // const addDb = async () => {
   

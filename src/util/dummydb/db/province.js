@@ -1,4 +1,4 @@
-[
+const dbProvince =  [
   {
     name: "DKI Jakarta",
     country_id: 1
@@ -16,3 +16,5 @@
     country_id: 4
   }
 ]
+
+export default dbProvince

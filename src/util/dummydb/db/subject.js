@@ -1,4 +1,4 @@
-[
+const dbSubject = [
   {
     name: "Social"
   },
@@ -15,3 +15,5 @@
     name: "Biology"
   }
 ]
+
+export default dbSubject

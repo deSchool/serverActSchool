@@ -1,4 +1,4 @@
-[
+const dbStudent = [
   {
     username: "John",
     fullname: "John Wick",
@@ -66,3 +66,5 @@
     status: true
   }
 ]
+
+export default dbStudent

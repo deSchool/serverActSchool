@@ -1,4 +1,4 @@
-[
+const dbMaterial = [
   {
     name: "Quiz Science",
     teacher_id: 1,
@@ -24,3 +24,5 @@
     classroom_id: 1
   }
 ]
+
+export default dbMaterial

@@ -1,4 +1,4 @@
-[
+const dbTest = [
   {
     name: "QUIZ"
   },
@@ -12,3 +12,5 @@
     name: "Home Work"
   }
 ]
+
+export default dbTest

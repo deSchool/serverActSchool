@@ -1,4 +1,4 @@
-[
+ const dbExtracurricular = [
   {
     name: "Boxing"
   },
@@ -18,3 +18,5 @@
     name: "Tennis"
   }
 ]
+
+export default dbExtracurricular

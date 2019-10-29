@@ -1,4 +1,4 @@
-[
+const dbCountry = [
   {
     name: "Indonesia"
   },
@@ -12,3 +12,5 @@
     name: "Japan"
   }
 ]
+
+export default dbCountry

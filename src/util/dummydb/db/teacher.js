@@ -1,4 +1,4 @@
-[
+const dbTeacher = [
   {
     username: "John",
     fullname: "John Teacher",
@@ -42,3 +42,5 @@
     status: true
   }
 ]
+
+export default dbTeacher

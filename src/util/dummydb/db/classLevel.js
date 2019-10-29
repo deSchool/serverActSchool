@@ -1,4 +1,4 @@
-[
+const dbClassLevel = [
   {
     name: "7"
   },
@@ -18,3 +18,5 @@
     name: "12"
   }
 ]
+
+export default dbClassLevel

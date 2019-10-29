@@ -1,4 +1,4 @@
-[
+const dbClass = [
   {
     name: "Science"
   },
@@ -12,3 +12,5 @@
     name: "Art"
   }
 ]
+
+export default dbClass

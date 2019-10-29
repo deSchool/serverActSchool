@@ -1,4 +1,4 @@
-[
+const dbClassroom = [
   {
     name: "9 IPA"
   },
@@ -15,3 +15,5 @@
     name: "9 IPS"
   }
 ]
+
+export default dbClassroom
