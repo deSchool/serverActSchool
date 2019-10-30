@@ -1,4 +1,4 @@
-import mongoose  from "mongoose";
+import mongoose from "mongoose";
 const Schema = mongoose.Schema;
 
 var classroomSchema = new Schema(
@@ -18,4 +18,4 @@ var classroomSchema = new Schema(
 
 const Classroom = mongoose.model("Classroom", classroomSchema);
 
-module.exports = Classroom;
+export default Classroom;

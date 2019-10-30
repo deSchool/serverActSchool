@@ -1,4 +1,4 @@
-import mongoose  from "mongoose";
+import mongoose from "mongoose";
 const Schema = mongoose.Schema;
 
 var classLevelSchema = new Schema(
@@ -8,11 +8,14 @@ var classLevelSchema = new Schema(
     },
   },
   {
-    timestamps: true,
+    timestamps: {
+      createdAt: 'created_at',
+      updatedAt: 'updated_at'
+    },
     underscored: true
   }
 );
 
 const ClassLevel = mongoose.model("ClassLevel", classLevelSchema);
 
-module.exports = ClassLevel;
+export default ClassLevel;

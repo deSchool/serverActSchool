@@ -1,7 +1,8 @@
 import mongoose from "mongoose";
 const Schema = mongoose.Schema;
 
-var subjectSchema = new Schema(
+
+var testSchema = new Schema(
   {
     name: {
       type: String,
@@ -13,6 +14,6 @@ var subjectSchema = new Schema(
   }
 );
 
-const Subject = mongoose.model("Subject", subjectSchema);
+const Test = mongoose.model("Test", testSchema);
 
-export default Subject;
+export default Test;

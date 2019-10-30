@@ -1,4 +1,4 @@
-import mongoose  from "mongoose";
+import mongoose from "mongoose";
 const Schema = mongoose.Schema;
 
 var materialSchema = new Schema(
@@ -15,7 +15,7 @@ var materialSchema = new Schema(
     teacher_id: {
       type: Number,
     },
-    student_id: {
+    classroom_id: {
       type: Number,
     },
     subject_id: {
@@ -30,4 +30,4 @@ var materialSchema = new Schema(
 
 const Material = mongoose.model("Material", materialSchema);
 
-module.exports = Material;
+export default Material;

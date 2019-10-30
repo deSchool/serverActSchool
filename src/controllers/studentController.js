@@ -1,10 +1,11 @@
-const Student = require("../models/student");
-const jwt = require("jsonwebtoken");
-const bcrypt = require('bcryptjs')
-const checkPassword = require("../helpers/checkPassword");
-const generatePassword = require("../helpers/generatePassword")
-const bcryptPass = require('../helpers/bcryptPass')
+import Student from "../models/student"
+import jwt from "jsonwebtoken"
+import bcrypt from 'bcryptjs'
+import checkPassword from "../helpers/checkPassword"
+import generatePassword from "../helpers/generatePassword"
+import bcryptPass from '../helpers/bcryptPass'
 import StudentAbsence from '../models/studentAbsence'
+import ClassLevel from '../models/classLevel'
 
 module.exports = {
   findAll: function(req,res) {
@@ -23,45 +24,87 @@ module.exports = {
     })
   },
   login: function(req, res) {
-    Student.findOne({ email: req.body.email })
+    if (req.body.email) {
+      Student.findOne({ email: req.body.email })
         .then(user => {
-            if (user) {
-              if (bcrypt.compareSync(req.body.password, user.password)) {
-                  jwt.sign(
-                  {
-                      userId: user._id,
-                      email: user.email
-                  },
-                  process.env.JWT_TOKEN,
-                  function(err, token) {
-                      if (!err) {
-                        res.status(201).json({
-                            id: user.id,
-                            token: token
-                        });
-                      } else {
-                        res.status(500).json({
-                            message: `Email and password didn't match 1`
-                        });
-                      }
-                  }
-                  );
-              } else {
-                  res.status(500).json({
-                  message: "email and password didnt match 2"
-                  });
-              }
+          if (user) {
+            if (bcrypt.compareSync(req.body.password, user.password)) {
+                jwt.sign(
+                {
+                    userId: user._id,
+                    email: user.email
+                },
+                process.env.JWT_TOKEN,
+                function(err, token) {
+                    if (!err) {
+                      res.status(201).json({
+                          id: user.id,
+                          token: token
+                      });
+                    } else {
+                      res.status(500).json({
+                          message: `Email and password didn't match 1`
+                      });
+                    }
+                }
+                );
             } else {
-            res.status(404).json({
-                message: "you did not have account, please signup first 3"
-            });
+                res.status(500).json({
+                message: "email and password didnt match 2"
+                });
             }
-        })
-        .catch(err => {
-            res.status(400).json({
-                message: `Something's error from our server`
-            })
-        });
+          } else {
+          res.status(404).json({
+              message: "you did not have account, please signup first 3"
+          });
+          }
+      })
+      .catch(err => {
+          res.status(400).json({
+              message: `Something's error from our server`
+          })
+      });
+    } else {
+      Student.findOne({ phone_number: req.body.phone_number })
+        .then(user => {
+          if (user) {
+            if (bcrypt.compareSync(req.body.password, user.password)) {
+                jwt.sign(
+                {
+                    userId: user._id,
+                    phone_number: user.phone_number
+                },
+                process.env.JWT_TOKEN,
+                function(err, token) {
+                    if (!err) {
+                      res.status(201).json({
+                          id: user.id,
+                          token: token
+                      });
+                    } else {
+                      res.status(500).json({
+                          message: `Email and password didn't match 1`
+                      });
+                    }
+                }
+                );
+            } else {
+                res.status(500).json({
+                message: "email and password didnt match 2"
+                });
+            }
+          } else {
+          res.status(404).json({
+              message: "you did not have account, please signup first 3"
+          });
+          }
+      })
+      .catch(err => {
+          res.status(400).json({
+              message: `Something's error from our server`
+          })
+      });
+    }
 },
 
 register: function(req, res) {
@@ -138,6 +181,8 @@ register: function(req, res) {
 
   profile: function (req, res) {
     Student.findOne({_id: req.data.userId})
+    .populate('class_level_id')
+    .populate('classroom_id')
     .then((user) => {
       res.status(200).json({
         user,

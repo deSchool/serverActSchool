@@ -4,6 +4,8 @@ import generatePassword from "../helpers/generatePassword";
 import bcrypt from "bcryptjs";
 
 import ClassLevel from "../models/classLevel";
+import classroom from "../models/classroom"
+import Classroom from "../models/classroom";
 
 
 var studentSchema = new Schema(
@@ -57,7 +59,9 @@ var studentSchema = new Schema(
       type: Boolean,
       default: true
     },
-    class_level_id: { type: Schema.Types.ObjectId, ref: ClassLevel }
+    class_level_id: { type: Schema.Types.ObjectId, ref: ClassLevel },
+    classroom_id: { type: Schema.Types.ObjectId, ref: Classroom },
+
   },
   {
     timestamps: true,
@@ -82,4 +86,4 @@ var studentSchema = new Schema(
 
 const Student = mongoose.model("Student", studentSchema);
 
-module.exports = Student;
+export default Student;

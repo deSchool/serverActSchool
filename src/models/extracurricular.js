@@ -1,4 +1,4 @@
-import mongoose  from "mongoose";
+import mongoose from "mongoose";
 const Schema = mongoose.Schema;
 
 var extracurricularSchema = new Schema(
@@ -15,4 +15,4 @@ var extracurricularSchema = new Schema(
 
 const Extracurricular = mongoose.model("Extracurricular", extracurricularSchema);
 
-module.exports = Extracurricular;
+export default Extracurricular;
