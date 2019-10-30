@@ -181,7 +181,8 @@ register: function(req, res) {
 
   profile: function (req, res) {
     Student.findOne({_id: req.data.userId})
-    .populate('ClassLevel')
+    .populate('class_level_id')
+    .populate('classroom_id')
     .then((user) => {
       res.status(200).json({
         user,

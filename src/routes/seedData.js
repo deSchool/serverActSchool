@@ -1,8 +1,8 @@
 import express from 'express';
 var router = express.Router();
-import { addCity } from '../controllers/seedData'
+import { seedData } from '../controllers/seedData'
 
 /* GET home page. */
-router.get('/', addCity);
+router.post('/', seedData);
 
 export default router

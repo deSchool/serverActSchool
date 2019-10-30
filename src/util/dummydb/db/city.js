@@ -2,19 +2,19 @@ const dbCity =
 [
   {
     name: "South Jakarta",
-    province: 1
+    province_id: 1
   },
   {
     name: "Bugis",
-    province: 2
+    province_id: 2
   },
   {
     name: "Kuala Lumpur",
-    province: 3
+    province_id: 3
   },
   {
     name: "Harajuku",
-    province: 4
+    province_id: 4
   }
 ]
 

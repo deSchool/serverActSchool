@@ -15,7 +15,7 @@ var materialSchema = new Schema(
     teacher_id: {
       type: Number,
     },
-    student_id: {
+    classroom_id: {
       type: Number,
     },
     subject_id: {

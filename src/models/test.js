@@ -1,14 +1,12 @@
 import mongoose from "mongoose";
 const Schema = mongoose.Schema;
 
-var citySchema = new Schema(
+
+var testSchema = new Schema(
   {
     name: {
       type: String,
     },
-    province_id: {
-      type: Number
-    }
   },
   {
     timestamps: true,
@@ -16,6 +14,6 @@ var citySchema = new Schema(
   }
 );
 
-const City = mongoose.model("City", citySchema);
+const Test = mongoose.model("Test", testSchema);
 
-export default City;
+export default Test;

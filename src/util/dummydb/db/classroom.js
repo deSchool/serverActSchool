@@ -6,7 +6,7 @@ const dbClassroom = [
     name: "11 BAHASA"
   },
   {
-    name: "11 IPS"
+    name: "10 IPS"
   },
   {
     name: "12 IPA"
