@@ -1,4 +1,4 @@
-import mongoose  from "mongoose";
+import mongoose from "mongoose";
 const Schema = mongoose.Schema;
 
 var reportSchema = new Schema(
@@ -28,6 +28,6 @@ var reportSchema = new Schema(
   }
 );
 
-const Material = mongoose.model("Material", reportSchema);
+const Report = mongoose.model("Report", reportSchema);
 
-module.exports = Material;
+export default Report;

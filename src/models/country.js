@@ -1,4 +1,4 @@
-import mongoose  from "mongoose";
+import mongoose from "mongoose";
 const Schema = mongoose.Schema;
 
 var countrySchema = new Schema(
@@ -15,4 +15,4 @@ var countrySchema = new Schema(
 
 const Country = mongoose.model("Country", countrySchema);
 
-module.exports = Country;
+export default Country;

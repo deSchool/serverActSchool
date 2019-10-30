@@ -1,4 +1,4 @@
-import mongoose  from "mongoose";
+import mongoose from "mongoose";
 const Schema = mongoose.Schema;
 
 import Student from './student'
@@ -18,4 +18,4 @@ var studentAbsenceSchema = new Schema(
 
 const StudentAbsence = mongoose.model("StudentAbsence", studentAbsenceSchema);
 
-module.exports = StudentAbsence;
+export default StudentAbsence;

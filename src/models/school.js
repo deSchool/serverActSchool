@@ -1,4 +1,4 @@
-import mongoose  from "mongoose";
+import mongoose from "mongoose";
 const Schema = mongoose.Schema;
 
 var schoolSchema = new Schema(
@@ -30,4 +30,4 @@ var schoolSchema = new Schema(
 
 const School = mongoose.model("School", schoolSchema);
 
-module.exports = School;
+export default School;
