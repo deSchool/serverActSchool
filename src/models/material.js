@@ -1,6 +1,9 @@
 import mongoose from "mongoose";
 const Schema = mongoose.Schema;
 
+import Classroom from "./classroom";
+import ClassLevel from "./classLevel"
+
 var materialSchema = new Schema(
   {
     name: {
@@ -16,8 +19,9 @@ var materialSchema = new Schema(
       type: Number,
     },
     classroom_id: {
-      type: Number,
+      type: String
     },
+    // classroom_id: [{ type: Schema.Types.ObjectId, ref: Classroom }],
     subject_id: {
       type: Number,
     },

@@ -4,7 +4,6 @@ import generatePassword from "../helpers/generatePassword";
 import bcrypt from "bcryptjs";
 
 import ClassLevel from "../models/classLevel";
-import classroom from "../models/classroom"
 import Classroom from "../models/classroom";
 
 

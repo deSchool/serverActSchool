@@ -1,6 +1,8 @@
 import mongoose from "mongoose";
 const Schema = mongoose.Schema;
 
+// import Material from './material'
+
 var classroomSchema = new Schema(
   {
     name: {
@@ -9,6 +11,7 @@ var classroomSchema = new Schema(
     class_teacher_id: {
       type: Number,
     },
+    // material: [{ type: Schema.Types.ObjectId, ref: Material }],
   },
   {
     timestamps: true,

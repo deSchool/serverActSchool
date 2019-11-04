@@ -1,7 +1,7 @@
 import express from 'express';
 var router = express.Router();
 import isLogin from '../middleware/isLogin'
-import { findAll } from '../controllers/classController'
+import { allMaterial } from '../controllers/classController'
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -9,6 +9,6 @@ router.get('/', function(req, res, next) {
     message: `Class Index Page`
   })
 });
-router.get('/material', isLogin, findAll)
+router.get('/material', isLogin, allMaterial)
 
 export default router
